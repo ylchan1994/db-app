@@ -46,6 +46,7 @@ function loadDB() {
 
 function queryDB() {
   const customer = new Customer(DBNAME);
+  setLog([]);
   customer.getCustomerData(setLog, setCustomerInfo);
 }
 
@@ -94,7 +95,7 @@ console.log(filter);
         </div>        
         <div className='mxemail-5 mt-5'>
           <div className='grid grid-cols-3 place-items-center py-2 border border-x-0 border-t-0 border-t-black'>
-            { Object.keys( customerInfo[0] || {} ).map((key) => <p >{key}</p> ) }
+            { customerInfo.length !== 0 ? (Object.keys( customerInfo[0] || {} ).map((key) => <p >{key}</p>) ) : <div>Nothing to show here</div> }
           </div>
           { customerInfo.map((customer) => {
             return (
